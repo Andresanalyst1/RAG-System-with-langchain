@@ -1,0 +1,22 @@
+[
+  {
+    "question": "What is Andres' current role?",
+    "ground_truth": "Andres is currently working as a Junior Data Analyst at OEE IntelliSuite in Paddington, Queensland, Australia."
+  },
+  {
+    "question": "What ML projects has Andres worked on?",
+    "ground_truth": "Andres worked on a Car Price Prediction project using a Kaggle Australian car market dataset and Facebook Marketplace scraping, including data cleaning, feature engineering, a Streamlit app, and Tableau dashboards. He also worked on a Bid Analysis project in Jupyter Notebook."
+  },
+  {
+    "question": "What certifications does Andres have?",
+    "ground_truth": "Andres holds an AWS Certified AI Practitioner certification, passed on January 6, 2026."
+  },
+  {
+    "question": "What programming languages and tools does Andres use?",
+    "ground_truth": "Andres uses Python (Pandas, Jupyter Notebook, feature engineering), SQL, Streamlit, Git/GitHub, Tableau, Power BI, and Excel with VBA macros. He is also learning cloud tools such as AWS, Azure, Databricks, and PySpark."
+  },
+  {
+    "question": "Does Andres have leadership experience?",
+    "ground_truth": "Yes. Andres was promoted to trainer in a customer service company where he supervised a team of approximately 15 people, handling onboarding, performance tracking, reporting, and training sessions."
+  }
+]

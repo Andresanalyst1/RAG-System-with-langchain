@@ -1,6 +1,13 @@
 langchain
 langchain-ollama
 langchain-chroma
+langchain-text-splitters
 pandas
 langchain-community
 unstructured[md]
+python-dotenv
+pypdf
+docx2txt
+beautifulsoup4
+ragas
+datasets
