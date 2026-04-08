@@ -1,5 +1,7 @@
 from langchain_ollama.llms import OllamaLLM
 from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+from langchain_anthropic import ChatAnthropic
 from embedding import retriever
 from dotenv import load_dotenv
 import os
@@ -9,7 +11,11 @@ load_dotenv()
 MEMORY_WINDOW = int(os.getenv("MEMORY_WINDOW", 5))
 
 # Setting model and template
-model = OllamaLLM(model=os.getenv("LLM_MODEL", "gemma3:4b"))
+model = ChatAnthropic(
+    model=os.getenv("LLM_MODEL"),
+    anthropic_api_key=os.getenv("ANTHROPIC_API_KEY"),
+)
+
 
 template = """
 You are an assistant responding questions about my life to a talent recruiter
@@ -26,7 +32,7 @@ Only respond the answer itself.
 
 prompt = ChatPromptTemplate.from_template(template)
 
-chain = prompt | model
+chain = prompt | model | StrOutputParser()
 
 if __name__ == "__main__":
     chat_history = []
