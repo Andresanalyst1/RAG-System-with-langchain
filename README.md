@@ -1,66 +1,71 @@
-#  Local RAG System — AI Recruiter Assistant
+# LOLA — RAG-Powered Recruiter Assistant
 
-> Ask anything about my professional background. Powered by a fully local RAG pipeline — no data leaves your machine.
-
----
-
-##  Overview
-
-This project is a **Retrieval-Augmented Generation (RAG) system** built to let recruiters and hiring managers have a natural conversation about my professional profile. Instead of reading through a static CV, they can ask questions directly and get context-aware, accurate answers grounded in real information about my experience.
-
-The stack runs **100% locally** using Ollama, meaning no API keys, no cloud costs, and no private data sent to third parties — a deliberate design choice that reflects real-world enterprise priorities around data privacy.
+> Ask anything about Andres' professional background. LOLA is an AI assistant powered by a RAG pipeline that answers recruiter questions with context-aware, grounded responses.
 
 ---
 
-##  Architecture
+## Overview
+
+This project is a **Retrieval-Augmented Generation (RAG) system** that lets recruiters and hiring managers have a natural conversation about Andres' professional profile. Instead of reading through a static CV, they can ask questions directly and get accurate, context-aware answers.
+
+LOLA uses **Claude (Anthropic API)** for generation and **Ollama** for local embeddings. A **Streamlit web UI** provides a clean chat interface, while a CLI mode is also available for development.
+
+---
+
+## Architecture
 
 ```
-andres_cardenas_profile.md
-        │
-        ▼
- Document Loader (auto-detected by type: MD, PDF, DOCX, TXT, URL)
-        │
-        ▼
+docs/ (MD, PDF, DOCX, TXT) + URLs
+        |
+        v
+ Document Loader (auto-detected by file type)
+        |
+        v
  Text Splitter (RecursiveCharacterTextSplitter)
   chunk_size=500 | chunk_overlap=50
-        │
-        ▼
- Embeddings (mxbai-embed-large via Ollama)
-        │
-        ▼
+        |
+        v
+ Embeddings (mxbai-embed-large via Ollama — local)
+        |
+        v
  Vector Store (ChromaDB — persisted locally)
-        │
-        ▼
- Retriever (top-k=6 similarity search)
-        │
-        ▼
- LLM Chain (gemma3:4b via Ollama + LangChain prompt)
-        │
-        ▼
- Streaming response in terminal
+        |
+        v
+ Retriever (top-k similarity search)
+        |
+        v
+ LLM Chain (Claude via Anthropic API + LangChain prompt)
+        |
+        v
+ Streaming response (Streamlit UI or terminal)
 ```
 
 ---
 
-##  Tech Stack
+## Tech Stack
 
 | Component       | Technology                          |
 |----------------|--------------------------------------|
-| LLM             | `gemma3:4b` via Ollama              |
+| LLM             | Claude (Anthropic API)              |
 | Embeddings      | `mxbai-embed-large:335m` via Ollama |
 | Vector Store    | ChromaDB (local persistence)        |
 | RAG Framework   | LangChain                           |
-| Document Source | MD, PDF, DOCX, TXT, web pages       |
+| Web UI          | Streamlit                           |
+| Evaluation      | RAGAS (faithfulness + relevancy)    |
+| Document Source  | MD, PDF, DOCX, TXT, web pages      |
 
 ---
 
-##  Features
+## Features
 
-- **Fully local inference** — no OpenAI or Anthropic API keys required
+- **Streamlit chat UI** — browser-based interface with streaming responses and conversation history
+- **CLI mode** — terminal-based chat loop for development and testing
 - **Persistent vector store** — embeddings are computed once and reused across sessions
 - **Streaming responses** — answers stream token by token in real time
-- **Recruiter-aware prompt** — the LLM is instructed to answer in the context of a professional conversation
+- **Conversation memory** — configurable sliding window so the assistant tracks follow-up questions
 - **Multi-document ingestion** — drop `.md`, `.pdf`, `.docx`, or `.txt` files into `docs/`, or add URLs via `.env`
+- **RAG evaluation** — automated quality scoring with RAGAS (faithfulness + answer relevancy)
+- **Lazy document loading** — documents are only parsed and chunked when the vector store is empty, for faster startup
 
 ---
 
@@ -69,12 +74,12 @@ andres_cardenas_profile.md
 ### Prerequisites
 
 - Python 3.10+
-- [Ollama](https://ollama.ai) installed and running locally
+- [Ollama](https://ollama.ai) installed and running locally (for embeddings only)
+- An [Anthropic API key](https://console.anthropic.com/settings/keys)
 
-### 1. Pull the required models
+### 1. Pull the embedding model
 
 ```bash
-ollama pull gemma3:4b
 ollama pull mxbai-embed-large:335m
 ```
 
@@ -93,28 +98,52 @@ pip install -r requirements.txt
 
 ### 4. Configure environment
 
-Edit `.env` if you want to use a different model or tune chunking parameters. The defaults work out of the box.
+Copy the example and fill in your API key:
 
-### 5. Run the assistant
+```bash
+cp .env.example .env
+```
+
+Then edit `.env` and set your `ANTHROPIC_API_KEY`.
+
+### 5. Run the Streamlit app
+
+```bash
+streamlit run app.py
+```
+
+Opens at `http://localhost:8501`. On first run, the vector store is built from all documents in `docs/`. Subsequent runs reuse the persisted embeddings for faster startup.
+
+### 5b. Run in CLI mode (optional)
 
 ```bash
 python LLM.py
 ```
 
-On first run, the vector store is built from all documents in `docs/`. Subsequent runs reuse the persisted embeddings for faster startup.
-
-> **To add new documents:** drop files into `docs/` (or add URLs to `DOCS_URLS` in `.env`), delete the `chroma_langchain_md/` folder, and rerun to re-ingest.
+> **To update documents:** drop files into `docs/` (or add URLs to `DOCS_URLS` in `.env`), delete the `chroma_langchain_md/` folder, and restart to re-ingest.
 
 ---
 
-## 💬 Example Questions
+## Example Questions
 
 ```
-Ask your question: What kind of ML projects has Andres worked on?
-Ask your question: Does he have experience with data pipelines?
-Ask your question: What tools does he use for data analysis?
-Ask your question: Has he deployed any models to production?
+What is Andres' current role?
+What ML projects has Andres worked on?
+What certifications does Andres have?
+What programming languages and tools does Andres use?
+Does Andres have leadership experience?
 ```
+
+---
+
+## Make It Your Own
+
+This repo is built around Andres' profile, but you can adapt it to any person or knowledge base in a few steps:
+
+1. **Replace the documents** — delete `docs/andres_cardenas_profile.md` and drop your own files (`.md`, `.pdf`, `.docx`, `.txt`) into `docs/`. Then delete the `chroma_langchain_md/` folder so the vector store rebuilds on next run.
+2. **Edit the prompt** — open `LLM.py` and update the `template` string. Change the name, persona, and instructions to match your use case.
+3. **Update the UI branding** — open `app.py` and change the page title, sidebar text, and chat input placeholder.
+4. **Write your own eval dataset** — replace the questions and ground truths in `eval_dataset.json` with ones relevant to your documents, then run `python evaluate.py`.
 
 ---
 
@@ -122,33 +151,24 @@ Ask your question: Has he deployed any models to production?
 
 ```
 RAG-System-with-langchain/
-├── LLM.py                        # Main RAG chain and conversation loop
+├── app.py                        # Streamlit web UI (chat interface)
+├── LLM.py                       # LLM chain, prompt template, and CLI loop
 ├── embedding.py                  # Document ingestion and vector store setup
-├── evaluate.py                   # RAGAS evaluation script (run on demand)
+├── evaluate.py                   # RAGAS evaluation script
 ├── eval_dataset.json             # Test questions and ground truths
 ├── docs/                         # Drop your documents here (MD, PDF, DOCX, TXT)
 │   └── andres_cardenas_profile.md
 ├── requirements.txt              # Python dependencies
-├── .env                          # Local config — model names and parameters (git-ignored)
+├── .env.example                  # Environment template (copy to .env)
+├── .env                          # Local config (git-ignored)
 └── README.md
 ```
 
 ---
 
-## Roadmap
-
-- [ ] Add a **Streamlit UI** for browser-based interaction (no terminal required)
-- [x] Add **conversation memory** so the assistant tracks follow-up questions
-- [x] Support **multi-document ingestion** (PDF, DOCX, web pages)
-- [x] Add **RAG evaluation** with RAGAS metrics (faithfulness, answer relevancy)
-- [ ] Containerize with **Docker** for reproducible environments
-- [x] Add `.env` config for model names and parameters
-
----
-
 ## Evaluation
 
-RAG quality is measured with [RAGAS](https://docs.ragas.io) using fully local Ollama models — no OpenAI key required.
+RAG quality is measured with [RAGAS](https://docs.ragas.io). The judge LLM is the same Claude model used for generation. Embeddings for the answer relevancy metric use the local Ollama model.
 
 ```bash
 python evaluate.py
@@ -164,11 +184,11 @@ Edit `eval_dataset.json` to add or update test questions and ground truths.
 
 ## Design Decisions
 
-**Why local?** Privacy is a first-class concern in enterprise AI. Running the entire stack locally means no profile data is sent to external APIs — a pattern directly applicable to internal company chatbots where confidential documents can't leave the network.
+**Why RAG over fine-tuning?** RAG allows the knowledge base to be updated without retraining. Swapping in a new document is all that's needed to update the assistant's knowledge.
 
 **Why ChromaDB?** Lightweight, zero-config persistence with a simple Python API. Appropriate for single-user or small-scale deployments where operational complexity should be minimal.
 
-**Why RAG over fine-tuning?** RAG allows the knowledge base to be updated without retraining. Swapping in a new version of the profile document is all that's needed to update the assistant's knowledge.
+**Why local embeddings + cloud LLM?** Embeddings run locally via Ollama (fast, free, no data leaves the machine). Generation uses Claude via the Anthropic API for higher quality responses. This hybrid approach balances quality with cost.
 
 ---
 

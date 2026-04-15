@@ -52,15 +52,6 @@ def load_documents():
     return docs
 
 
-# Load and split all documents
-raw_docs = load_documents()
-
-text_splitter = RecursiveCharacterTextSplitter(
-    chunk_size=CHUNK_SIZE,
-    chunk_overlap=CHUNK_OVERLAP
-)
-content = text_splitter.split_documents(raw_docs)
-
 embeddings = OllamaEmbeddings(model=EMBEDDING_MODEL)
 
 vector_store = Chroma(
@@ -69,8 +60,16 @@ vector_store = Chroma(
     embedding_function=embeddings
 )
 
-# Add documents only if the collection is empty
+# Only load + chunk documents when the vector store is actually empty.
+# Otherwise we'd pay the cost of parsing every file on every startup for nothing.
 if vector_store._collection.count() == 0:
+    print("[INFO] Empty vector store — loading and chunking documents...")
+    raw_docs = load_documents()
+    text_splitter = RecursiveCharacterTextSplitter(
+        chunk_size=CHUNK_SIZE,
+        chunk_overlap=CHUNK_OVERLAP
+    )
+    content = text_splitter.split_documents(raw_docs)
     print(f"[INFO] Adding {len(content)} chunks to vector store...")
     vector_store.add_documents(content)
 else:

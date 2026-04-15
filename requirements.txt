@@ -1,6 +1,7 @@
 langchain
 langchain-ollama
 langchain-chroma
+langchain-anthropic
 langchain-text-splitters
 pandas
 langchain-community
@@ -11,3 +12,4 @@ docx2txt
 beautifulsoup4
 ragas
 datasets
+streamlit
