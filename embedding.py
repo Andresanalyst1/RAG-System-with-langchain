@@ -1,13 +1,6 @@
 from langchain_ollama import OllamaEmbeddings
 from langchain_chroma import Chroma
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_community.document_loaders import (
-    UnstructuredMarkdownLoader,
-    PyPDFLoader,
-    Docx2txtLoader,
-    TextLoader,
-    WebBaseLoader,
-)
 from dotenv import load_dotenv
 import os
 
@@ -21,22 +14,31 @@ CHROMA_PATH = os.getenv("CHROMA_PATH", "./chroma_langchain_md")
 DOCS_DIR = os.getenv("DOCS_DIR", "./docs")
 DOCS_URLS = [u.strip() for u in os.getenv("DOCS_URLS", "").split(",") if u.strip()]
 
-LOADER_MAP = {
-    ".md":   UnstructuredMarkdownLoader,
-    ".pdf":  PyPDFLoader,
-    ".docx": Docx2txtLoader,
-    ".txt":  TextLoader,
-}
-
-
 def load_documents():
+    """Load documents from docs/ and URLs. Heavy loaders are imported here
+    so they only add startup cost when the vector store actually needs rebuilding."""
+    from langchain_community.document_loaders import (
+        UnstructuredMarkdownLoader,
+        PyPDFLoader,
+        Docx2txtLoader,
+        TextLoader,
+        WebBaseLoader,
+    )
+
+    loader_map = {
+        ".md":   UnstructuredMarkdownLoader,
+        ".pdf":  PyPDFLoader,
+        ".docx": Docx2txtLoader,
+        ".txt":  TextLoader,
+    }
+
     docs = []
 
     # Load files from docs/ directory
     if os.path.isdir(DOCS_DIR):
         for filename in os.listdir(DOCS_DIR):
             ext = os.path.splitext(filename)[1].lower()
-            loader_cls = LOADER_MAP.get(ext)
+            loader_cls = loader_map.get(ext)
             if loader_cls:
                 path = os.path.join(DOCS_DIR, filename)
                 print(f"[INFO] Loading file: {filename}")

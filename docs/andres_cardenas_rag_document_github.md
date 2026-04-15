@@ -64,18 +64,11 @@ A companion project helping potential sellers find the optimal listing price for
 
 ---
 
-### Local LLM + RAG Company Infrastructure (Internal)
-**Stack:** Open WebUI · Ollama · Docker · Nginx · RAG · LLM Infrastructure
-
-Designed and advocated for a company-wide local LLM and RAG chatbot system motivated by data privacy compliance. Stack includes Open WebUI + Ollama on a Linux VM with GPU, HTTPS/Nginx security layer, and a document assistant powered by the RAG/Knowledge Base features of Open WebUI. Drafted IT infrastructure request documents for internal approval. This project reflects Andres's understanding of the compliance risks of routing sensitive company data through external APIs.
-
----
-
 ### LOLA — Personal AI Agent on Raspberry Pi CM4 *(Active Development)*
 **Stack:** Raspberry Pi CM4 · OpenClaw · Anthropic Claude API · Discord · Microsoft Edge TTS · ARM64  
 **Status:** Actively developed and self-hosted
 
-LOLA is Andres's personal AI agent running on a Raspberry Pi CM4 (eMMC storage, ARM64 architecture). It uses the OpenClaw agent framework with the Anthropic Claude API as the LLM backend, and is interfaced primarily through a Discord bot with Microsoft Edge TTS for voice output. The gateway runs on port 18789 on the local network (IP: 192.168.20.19).
+LOLA is Andres's personal AI agent running on a Raspberry Pi CM4 (eMMC storage, ARM64 architecture). It uses the OpenClaw agent framework with the Anthropic Claude API as the LLM backend, and is interfaced primarily through a Discord bot with Microsoft Edge TTS for voice output. 
 
 This project involved extensive end-to-end hardware and software work: flashing eMMC via rpiboot (USB-C port on the 52Pi EP-0146 board), bootloader and jumper configuration, PATH setup for the OpenClaw binary, session management debugging, and TTS provider evaluation (tested ElevenLabs, OpenAI TTS, and Microsoft Edge TTS before settling on Edge TTS for stability). LOLA demonstrates Andres's ability to architect, deploy, and maintain a full self-hosted AI stack from bare metal upward.
 
