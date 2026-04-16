@@ -13,3 +13,4 @@ beautifulsoup4
 ragas
 datasets
 streamlit
+protobuf>=3.20.0,<4.0.0
