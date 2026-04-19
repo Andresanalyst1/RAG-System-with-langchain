@@ -8,7 +8,7 @@
 
 This project is a **Retrieval-Augmented Generation (RAG) system** that lets recruiters and hiring managers have a natural conversation about Andres' professional profile. Instead of reading through a static CV, they can ask questions directly and get accurate, context-aware answers.
 
-LOLA uses **Claude (Anthropic API)** for generation and **Ollama** for local embeddings. A **Streamlit web UI** provides a clean chat interface, while a CLI mode is also available for development.
+LOLA uses **Claude (Anthropic API)** for generation and the **HuggingFace Inference API** for embeddings. A **Streamlit web UI** provides a clean chat interface, while a CLI mode is also available for development.
 
 ---
 
@@ -25,7 +25,7 @@ docs/ (MD, PDF, DOCX, TXT) + URLs
   chunk_size=500 | chunk_overlap=50
         |
         v
- Embeddings (mxbai-embed-large via Ollama — local)
+ Embeddings (all-MiniLM-L6-v2 via HuggingFace Inference API)
         |
         v
  Vector Store (ChromaDB — persisted locally)
@@ -47,7 +47,7 @@ docs/ (MD, PDF, DOCX, TXT) + URLs
 | Component       | Technology                          |
 |----------------|--------------------------------------|
 | LLM             | Claude (Anthropic API)              |
-| Embeddings      | `mxbai-embed-large:335m` via Ollama |
+| Embeddings      | `all-MiniLM-L6-v2` via HuggingFace Inference API |
 | Vector Store    | ChromaDB (local persistence)        |
 | RAG Framework   | LangChain                           |
 | Web UI          | Streamlit                           |
@@ -74,29 +74,23 @@ docs/ (MD, PDF, DOCX, TXT) + URLs
 ### Prerequisites
 
 - Python 3.10+
-- [Ollama](https://ollama.ai) installed and running locally (for embeddings only)
 - An [Anthropic API key](https://console.anthropic.com/settings/keys)
+- A [HuggingFace access token](https://huggingface.co/settings/tokens) (free — "Read" permission is enough)
 
-### 1. Pull the embedding model
-
-```bash
-ollama pull mxbai-embed-large:335m
-```
-
-### 2. Clone the repository
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/Andresanalyst1/RAG-System-with-langchain.git
 cd RAG-System-with-langchain
 ```
 
-### 3. Install dependencies
+### 2. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Configure environment
+### 3. Configure environment
 
 Copy the example and fill in your API key:
 
@@ -104,9 +98,9 @@ Copy the example and fill in your API key:
 cp .env.example .env
 ```
 
-Then edit `.env` and set your `ANTHROPIC_API_KEY`.
+Then edit `.env` and set both `ANTHROPIC_API_KEY` and `HF_TOKEN`.
 
-### 5. Run the Streamlit app
+### 4. Run the Streamlit app
 
 ```bash
 streamlit run app.py
@@ -114,7 +108,7 @@ streamlit run app.py
 
 Opens at `http://localhost:8501`. On first run, the vector store is built from all documents in `docs/`. Subsequent runs reuse the persisted embeddings for faster startup.
 
-### 5b. Run in CLI mode (optional)
+### 4b. Run in CLI mode (optional)
 
 ```bash
 python LLM.py
@@ -168,7 +162,7 @@ RAG-System-with-langchain/
 
 ## Evaluation
 
-RAG quality is measured with [RAGAS](https://docs.ragas.io). The judge LLM is the same Claude model used for generation. Embeddings for the answer relevancy metric use the local Ollama model.
+RAG quality is measured with [RAGAS](https://docs.ragas.io). The judge LLM is the same Claude model used for generation. Embeddings for the answer relevancy metric use the HuggingFace Inference API (same model as the RAG pipeline).
 
 ```bash
 python evaluate.py
@@ -188,7 +182,7 @@ Edit `eval_dataset.json` to add or update test questions and ground truths.
 
 **Why ChromaDB?** Lightweight, zero-config persistence with a simple Python API. Appropriate for single-user or small-scale deployments where operational complexity should be minimal.
 
-**Why local embeddings + cloud LLM?** Embeddings run locally via Ollama (fast, free, no data leaves the machine). Generation uses Claude via the Anthropic API for higher quality responses. This hybrid approach balances quality with cost.
+**Why hosted embeddings?** Embeddings are called via the HuggingFace Inference API instead of running a model locally. This keeps the deployment lightweight (no `torch`/`sentence-transformers` in the image), fits comfortably on Streamlit Community Cloud's free tier, and keeps cold starts fast. Generation uses Claude via the Anthropic API for higher quality responses.
 
 ---
 

@@ -34,11 +34,8 @@
 
 ## Current & Recent Roles
 
-### Junior Data Analyst — OEE IntelliSuite
-- Built and maintained operational metrics and calculation logic, carefully testing formulas and assumptions to support 45+ documented insights related to efficiency and performance.
-- Prepared clear and well-structured reports and dashboards in Power BI, translating raw data into accessible outputs to reduce delays in decision-making.
-- Assisted in the organisation and documentation of data workflows, research notes, and analysis outputs, ensuring information was easy to understand, trace, and reuse by team members.
-- Conducted exploratory data analysis (EDA) to identify trends, anomalies, and data quality issues, contributing to quality assurance processes and reliable research outcomes.
+### Machine Learning Specialist — Polyurethane factory (current job)
+- Responsibilities: In this project, Andres researches and evaluates large language models (LLMs) for local deployment, contributing to the automation and standardization of knowledge sharing across key areas such as sales training and data accuracy.
 
 ### Goods In / Inbound Inventory Analyst — Polyurethane factory (current job)
 - Responsibilities: receiving goods, checking deliveries against purchase orders, updating ERP, machine handling, stock control, forklift driving, sanding/bogging/pouring tasks, packing, coordinating with the team to meet operational goals.
@@ -48,6 +45,14 @@ Maintained weekly checks and running totals to support accurate stock tracking a
 - Followed established data handling processes while coordinating with multiple teams to ensure data
 accuracy and reliability.
 - Progressed internally from Production Operator → Forklift Driver → Inbound Inventory Analyst.
+
+### Junior Data Analyst — OEE IntelliSuite (past)
+- Built and maintained operational metrics and calculation logic, carefully testing formulas and assumptions to support 45+ documented insights related to efficiency and performance.
+- Prepared clear and well-structured reports and dashboards in Power BI, translating raw data into accessible outputs to reduce delays in decision-making.
+- Assisted in the organisation and documentation of data workflows, research notes, and analysis outputs, ensuring information was easy to understand, trace, and reuse by team members.
+- Conducted exploratory data analysis (EDA) to identify trends, anomalies, and data quality issues, contributing to quality assurance processes and reliable research outcomes.
+
+
 
 ### Customer Service / Trainer — US campaign (past)
 - ~8 months experience in a customer service company. Started as agent, promoted to trainer overseeing a team of ~15, handling onboarding, administrative tasks, reporting, and performance tracking.
@@ -70,7 +75,7 @@ accuracy and reliability.
 
 **Tools & IDEs:** Visual Studio Code, GitHub, Jupyter Notebook, Tableau, Streamlit, Excel (advanced, macros & VBA experience).
 
-**Cloud & Big Data (learning interests):** AWS (AI Practitioner certified), interest in Azure, Databricks, PySpark, data lakes and warehouses.
+**Cloud & Big Data (learning interests):** AWS (AI Practitioner certified), interest in Azure, CI/CD, Agents deployment, Pytorch, PySpark, Computer Science, data lakes and warehouses.
 
 **Other:** ERP systems (updating and handling stock & procurement flows), operating forklifts and warehouse machinery.
 

@@ -1,4 +1,4 @@
-from langchain_ollama import OllamaEmbeddings
+from langchain_huggingface import HuggingFaceEndpointEmbeddings
 from langchain_chroma import Chroma
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from dotenv import load_dotenv
@@ -6,7 +6,7 @@ import os
 
 load_dotenv()
 
-EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "mxbai-embed-large:335m")
+EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "sentence-transformers/all-MiniLM-L6-v2")
 CHUNK_SIZE = int(os.getenv("CHUNK_SIZE", 500))
 CHUNK_OVERLAP = int(os.getenv("CHUNK_OVERLAP", 50))
 RETRIEVER_K = int(os.getenv("RETRIEVER_K", 6))
@@ -54,7 +54,10 @@ def load_documents():
     return docs
 
 
-embeddings = OllamaEmbeddings(model=EMBEDDING_MODEL)
+embeddings = HuggingFaceEndpointEmbeddings(
+    model=EMBEDDING_MODEL,
+    huggingfacehub_api_token=os.getenv("HF_TOKEN"),
+)
 
 vector_store = Chroma(
     collection_name="rag_documents",

@@ -1,5 +1,5 @@
 langchain
-langchain-ollama
+langchain-huggingface
 langchain-chroma
 langchain-anthropic
 langchain-text-splitters

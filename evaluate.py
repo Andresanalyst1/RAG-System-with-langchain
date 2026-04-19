@@ -5,7 +5,7 @@ import json
 load_dotenv()
 
 from langchain_anthropic import ChatAnthropic
-from langchain_ollama import OllamaEmbeddings
+from langchain_huggingface import HuggingFaceEndpointEmbeddings
 from ragas import evaluate
 from ragas.metrics import Faithfulness, AnswerRelevancy
 from ragas.llms import LangchainLLMWrapper
@@ -16,17 +16,22 @@ from embedding import retriever
 from LLM import chain
 
 LLM_MODEL = os.getenv("LLM_MODEL")
-EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "mxbai-embed-large:335m")
+EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "sentence-transformers/all-MiniLM-L6-v2")
 
-# Judge LLM is Claude (same model used for generation). Embeddings stay local
-# via Ollama since RAGAS only uses them for cosine similarity in AnswerRelevancy.
+# Judge LLM is Claude (same model used for generation). Embeddings use the
+# HuggingFace Inference API since RAGAS only needs them for cosine similarity in AnswerRelevancy.
 ragas_llm = LangchainLLMWrapper(
     ChatAnthropic(
         model=LLM_MODEL,
         anthropic_api_key=os.getenv("ANTHROPIC_API_KEY"),
     )
 )
-ragas_emb = LangchainEmbeddingsWrapper(OllamaEmbeddings(model=EMBEDDING_MODEL))
+ragas_emb = LangchainEmbeddingsWrapper(
+    HuggingFaceEndpointEmbeddings(
+        model=EMBEDDING_MODEL,
+        huggingfacehub_api_token=os.getenv("HF_TOKEN"),
+    )
+)
 
 # Load test questions and ground truths
 with open("eval_dataset.json") as f:

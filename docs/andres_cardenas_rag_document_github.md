@@ -41,10 +41,10 @@ Outside of work, Andres enjoys weightlifting, running, and cooking. He tracks an
 ## Projects
 
 ### RAG-Based AI Chatbot for Recruiters
-**Stack:** Python · LangChain · ChromaDB · Ollama · Gemini Flash · Streamlit · RAG  
+**Stack:** Python · LangChain · ChromaDB · Hugging face · Claude Haiku 4.5 · Streamlit · RAG  
 **Link:** github.com/Andresanalyst1
 
-An end-to-end RAG chatbot designed to answer recruiter questions about Andres's profile. Accessible via QR code on his CV. The local prototype uses Ollama + LangChain + ChromaDB. The cloud version uses Gemini Flash API + Streamlit Community Cloud for 24/7 availability. Features pre-computed embeddings committed to GitHub and API key management via `st.secrets`.
+An end-to-end RAG chatbot designed to answer recruiter questions about Andres's profile. Accessible via QR code on his CV. The local prototype uses Hugging Face + LangChain + ChromaDB. The cloud version uses Claude API + Streamlit Community Cloud for 24/7 availability. Features pre-computed embeddings committed to GitHub and API key management via `st.secrets`.
 
 ---
 
