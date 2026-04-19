@@ -1,4 +1,16 @@
+import os
 import streamlit as st
+
+# Bridge Streamlit Cloud secrets into os.environ so the rest of the app
+# (which reads via os.getenv) works identically on Cloud and locally.
+# setdefault means a local .env value is not overwritten if both exist.
+try:
+    for key, value in st.secrets.items():
+        os.environ.setdefault(key, str(value))
+except Exception:
+    # No secrets.toml configured (local dev without Streamlit secrets) — rely on .env
+    pass
+
 from LLM import stream_answer
 
 st.set_page_config(
