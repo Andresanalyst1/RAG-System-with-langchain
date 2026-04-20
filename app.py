@@ -38,6 +38,13 @@ with st.sidebar:
 # Main chat area
 st.title("Chat with Andres' AI")
 
+# Static welcome message — always rendered as the first assistant bubble
+with st.chat_message("assistant"):
+    st.markdown(
+        "Hi, welcome to Andres' AI assistant chatbot. I'm **LOLA**. "
+        "Feel free to ask me anything about Andres’ professional career, background, or key facts."
+    )
+
 # Replay history
 for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
