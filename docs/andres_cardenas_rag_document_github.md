@@ -7,7 +7,7 @@ Brisbane, Queensland, Australia
 
 ## About
 
-Andres Cardenas is an Industrial Engineer who transitioned into Data Science and Machine Learning, with approximately two years of focused study and hands-on project development. He is currently based in Brisbane, Australia, and is actively seeking roles in data analytics, data science, or machine learning engineering.
+Andres Cardenas is a Production Engineer who transitioned into Data Science and Machine Learning, with approximately two years of focused study and hands-on project development. He is currently based in Brisbane, Australia, and is actively seeking roles in AI automations, data analytics, data science, or machine learning engineering.
 
 Andres is passionate about applying AI to real-world problems, particularly around privacy-respecting local AI infrastructure and end-to-end ML deployments. He believes in building practical, deployable systems rather than just theoretical notebooks.
 
@@ -30,7 +30,7 @@ Outside of work, Andres enjoys weightlifting, running, and cooking. He tracks an
 |---|---|
 | Languages | Python, SQL (MySQL) |
 | ML & Data Science | scikit-learn, CatBoost, NumPy, Pandas, Matplotlib |
-| AI / LLM Stack | LangChain, ChromaDB, Ollama, RAG pipelines, Gemini Flash API, Anthropic Claude API |
+| AI / LLM Stack | LangChain, ChromaDB, Ollama, vLLM, RAG pipelines, Gemini Flash API, Anthropic Claude API |
 | Deployment & Apps | Streamlit, Streamlit Community Cloud, Docker (WSL/Ubuntu) |
 | Infrastructure | Open WebUI, Local LLM deployment, Raspberry Pi CM4, Nginx |
 | Cloud & Other | AWS, Git, GitHub, Power BI |
@@ -44,7 +44,7 @@ Outside of work, Andres enjoys weightlifting, running, and cooking. He tracks an
 **Stack:** Python · LangChain · ChromaDB · Hugging face · Claude Haiku 4.5 · Streamlit · RAG  
 **Link:** github.com/Andresanalyst1
 
-An end-to-end RAG chatbot designed to answer recruiter questions about Andres's profile. Accessible via QR code on his CV. The local prototype uses Hugging Face + LangChain + ChromaDB. The cloud version uses Claude API + Streamlit Community Cloud for 24/7 availability. Features pre-computed embeddings committed to GitHub and API key management via `st.secrets`.
+An end-to-end RAG chatbot designed to answer recruiters' questions about Andres's profile. Accessible via QR code on his CV. The local prototype uses Hugging Face + LangChain + ChromaDB. The cloud version uses Claude API + Streamlit Community Cloud for 24/7 availability. Features pre-computed embeddings committed to GitHub and API key management via `st.secrets`.
 
 ---
 
@@ -78,7 +78,7 @@ This project involved extensive end-to-end hardware and software work: flashing 
 **Stack:** OpenClaw · Anthropic Claude API · Strava API · Raspberry Pi CM4 · Python  
 **Status:** In development as a hobby/personal project
 
-Andres is integrating his OpenClaw agent LOLA with the Strava API to create a personalised AI running coach. The integration allows LOLA to read Andres's training data from Strava — including run distances, pace, heart rate, elevation, and workout history — and provide coaching feedback, training load analysis, and improvement suggestions.
+Andres is integrating his OpenClaw agent LOLA with the Strava API to create a personalised AI running coach. The integration allows LOLA to read Andres's training data from Strava — including run distances, pace, heart rate, elevation, and workout history — and provide coaching feedback, metrics, training load analysis, and improvement suggestions.
 
 This project sits at the intersection of Andres's technical skills (API integration, agent tool development, data analysis) and his personal passion for running. It demonstrates applied LLM agent development with real-world fitness data and reflects his broader interest in building AI tools that improve everyday life.
 
@@ -117,11 +117,11 @@ Andres is a methodical, hands-on professional who approaches problems by underst
 
 ## Personal Interests
 
-- **Weightlifting** — regular gym training.
+- **Weightlifting** — regular gym training, at least 3 days a week.
 - **Ukulele** - Learning how to play ukulele replicating his favourites songs.
 - **Running** — tracks training on Strava; currently building an AI coaching tool on top of his running data.
 - **Cooking** — enjoys preparing meals.
-- **Self-hosted technology** — passionate about owning and controlling personal AI infrastructure.
+- **Self-hosted technology** — passionate about owning and controlling personal AI infrastructure. Learning IT infrastructure and new technologies.
 
 ---
 
