@@ -29,6 +29,7 @@
 - **AWS Certified AI Practitioner** — *Passed on January 6, 2026.*
 - **Data scientist certificate from Codecademy platform** — Ongoing self-learning: Python, Jupyter, Streamlit, Git/GitHub, Tableau, Power BI.
 - **Learn Git and Github Certificate**
+- **Production Engineer**
 
 ---
 
@@ -36,8 +37,17 @@
 
 ### Machine Learning Specialist — Polyurethane factory (current job)
 - Responsibilities: In this project, Andres researches and evaluates large language models (LLMs) for local deployment, contributing to the automation and standardization of knowledge sharing across key areas such as sales training and data accuracy.
+- Led the end-to-end design and deployment of a private, company-hosted AI chatbot, evaluating on-premise vs. cloud vs. hybrid inference architectures to balance data privacy, cost, and performance constraints. Owned the technical decision-making from infrastructure specification through model serving and stakeholder alignment with IT leadership.
+- Bullet points:
+Architected the deployment strategy, evaluating three approaches (CPU-only local pilot, cloud LLM API, and hybrid local+cloud) and recommending a phased path that preserved data privacy while unblocking a GPU-less server constraint.
+Defined infrastructure requirements (compute, storage, OS, networking, containerization) for a CPU-only pilot as an interim solution ahead of GPU provisioning, and communicated trade-offs directly to IT/leadership stakeholders.
+Evaluated and provisioned GPU cloud infrastructure (RunPod), comparing instance types, GPU hardware (e.g., L40S vs. A16) on memory bandwidth and inference-speed criteria specific to LLM workloads.
+Deployed and configured the serving stack: Docker/Docker Compose, Open WebUI, and vLLM for OpenAI-compatible model serving, benchmarking multiple open-weight models (Qwen2.5 32B, Gemma 4 12B/31B) for production suitability.
+Implemented enterprise authentication, configuring OAuth 2.0/OIDC (Azure AD/Entra ID) for corporate SSO integration.
+Designed the production network architecture, separating local development/testing from a 24/7 company-server deployment accessible to employees over the internal network.
+Advised leadership on data governance trade-offs between on-premise and cloud-hosted inference, shaping the final architecture decision.
 
-### Goods In / Inbound Inventory Analyst — Polyurethane factory (current job)
+### Goods In / Inbound Inventory Analyst — Polyurethane factory 
 - Responsibilities: receiving goods, checking deliveries against purchase orders, updating ERP, machine handling, stock control, forklift driving, sanding/bogging/pouring tasks, packing, coordinating with the team to meet operational goals.
 - Reviewed and processed high volumes of structured numerical data (+45 invoices per day), ensuring accurate entry and consistent formatting.
 Identified missing or inconsistent data in supplier and delivery reports (using Microsoft Suite 365), resolving discrepancies before final recording.
@@ -54,7 +64,7 @@ accuracy and reliability.
 
 
 
-### Customer Service / Trainer — US campaign (past)
+### Customer Service / Trainer — US campaign
 - ~8 months experience in a customer service company. Started as agent, promoted to trainer overseeing a team of ~15, handling onboarding, administrative tasks, reporting, and performance tracking.
 
 ### Freelancer — multiple short-term projects
@@ -71,7 +81,7 @@ accuracy and reliability.
 
 ## Technical Skills
 
-**Programming & Data:** Python (Jupyter Notebook, Pandas, feature engineering), SQL (foundational), basic experience with ML workflows, Streamlit (app development), Git/GitHub, Tableau, Power BI (reviewing features), web scraping (Facebook Marketplace dataset).
+**Programming & Data:** Linux envs, Python (Jupyter Notebook, Pandas, feature engineering), LLMS, RAG systems, SQL (foundational), basic experience with ML workflows, Streamlit (app development), Git/GitHub, Tableau, Power BI (reviewing features), web scraping (Facebook Marketplace dataset).
 
 **Tools & IDEs:** Visual Studio Code, GitHub, Jupyter Notebook, Tableau, Streamlit, Excel (advanced, macros & VBA experience).
 
@@ -93,7 +103,7 @@ The article concluded that gamification can significantly enhance the learning e
 
 ## Soft Skills & Strengths
 
-- **Analytical thinking:** Comfortable turning domain intuition (industrial engineering) into structured features for ML models.
+- **Analytical thinking:** Comfortable turning domain intuition (production engineering) into structured features for ML models.
 - **Practical, hands‑on:** Factory experience (machines, forklifts, packing) plus office/reporting experience — strong operational understanding.
 - **Learning discipline:** Self‑taught on multiple technical tools (Python, Git, Streamlit); proud of self‑discipline for gym and study.
 - **Leadership & training:** Experience as a trainer supervising ~15 people and running team onboarding and reporting.
