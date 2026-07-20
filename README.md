@@ -1,5 +1,5 @@
 # LOLA — RAG-Powered Recruiter Assistant
-Click right here: https://lola-rag-system-with-langchain.streamlit.app/
+Click right here: https://lola-chatbot.andres-cardenas.com/
 
 > Ask anything about Andres' professional background. LOLA is an AI assistant powered by a RAG pipeline that answers recruiter questions with context-aware, grounded responses.
 
