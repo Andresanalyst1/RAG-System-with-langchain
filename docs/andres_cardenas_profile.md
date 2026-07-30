@@ -7,7 +7,7 @@
 ## Snapshot
 
 - **Name:** Andres (Andrés) Cardenas
-- **Current role (latest known):** ICT Student and Machine Learning specialist at NPR, Australia.
+- **Current role (latest known):**  Data and AI Analyst at NPR, Australia.
 - **Last role:** Junior Data Analyst at OEE IntelliSuite
 - **Location:** Queensland, Australia (Paddington / Brisbane area)
 - **Languages:** Spanish (native), English (comfortable; learning), Portuguese (conversational/previously lived in Brazil)
