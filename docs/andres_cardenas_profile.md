@@ -35,7 +35,7 @@
 
 ## Current & Recent Roles
 
-### Machine Learning Specialist — Polyurethane factory (current job)
+### Data and AI Analyst — Polyurethane factory National Plastic and Rubber (current job)
 - Responsibilities: In this project, Andres researches and evaluates large language models (LLMs) for local deployment, contributing to the automation and standardization of knowledge sharing across key areas such as sales training and data accuracy.
 - Led the end-to-end design and deployment of a private, company-hosted AI chatbot, evaluating on-premise vs. cloud vs. hybrid inference architectures to balance data privacy, cost, and performance constraints. Owned the technical decision-making from infrastructure specification through model serving and stakeholder alignment with IT leadership.
 - Bullet points:
@@ -47,7 +47,7 @@ Implemented enterprise authentication, configuring OAuth 2.0/OIDC (Azure AD/Entr
 Designed the production network architecture, separating local development/testing from a 24/7 company-server deployment accessible to employees over the internal network.
 Advised leadership on data governance trade-offs between on-premise and cloud-hosted inference, shaping the final architecture decision.
 
-### Goods In / Inbound Inventory Analyst — Polyurethane factory 
+### Goods In / Inbound Inventory Analyst — Polyurethane factory National Plastic and Rubber
 - Responsibilities: receiving goods, checking deliveries against purchase orders, updating ERP, machine handling, stock control, forklift driving, sanding/bogging/pouring tasks, packing, coordinating with the team to meet operational goals.
 - Reviewed and processed high volumes of structured numerical data (+45 invoices per day), ensuring accurate entry and consistent formatting.
 Identified missing or inconsistent data in supplier and delivery reports (using Microsoft Suite 365), resolving discrepancies before final recording.
