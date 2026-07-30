@@ -7,7 +7,7 @@
 ## Snapshot
 
 - **Name:** Andres (Andrés) Cardenas
-- **Current role (latest known):**  Data and AI Analyst at NPR, Australia.
+- **Current role (latest known):**  Data and AI Analyst at National Plastics and Rubber (NPR), Australia.
 - **Last role:** Junior Data Analyst at OEE IntelliSuite
 - **Location:** Queensland, Australia (Paddington / Brisbane area)
 - **Languages:** Spanish (native), English (comfortable; learning), Portuguese (conversational/previously lived in Brazil)
@@ -17,7 +17,7 @@
 
 ## Education
 
-- **Advanced Diploma of ICT** — (in progress; Studies in Canterbury Technical Institute).  
+- **Advanced Diploma of ICT** — Studies in Canterbury Technical Institute 
 - **Bachelor in Industrial Engineering** — studied at Universidad Industrial de Santander, Colombia.  
 -**Exchange Studies** - Studied 1 semester production engineering in Sao Paulo, Brazil as part of exchange studies.
   *During bachelor studies, contributed to academic work / articles related to technology and education (see Publications).*
@@ -35,9 +35,17 @@
 
 ## Current & Recent Roles
 
-### Data and AI Analyst — Polyurethane factory National Plastic and Rubber (current job)
+### Data and AI Analyst — Polyurethane factory National Plastic and Rubber NPR (current job)
 - Responsibilities: In this project, Andres researches and evaluates large language models (LLMs) for local deployment, contributing to the automation and standardization of knowledge sharing across key areas such as sales training and data accuracy.
 - Led the end-to-end design and deployment of a private, company-hosted AI chatbot, evaluating on-premise vs. cloud vs. hybrid inference architectures to balance data privacy, cost, and performance constraints. Owned the technical decision-making from infrastructure specification through model serving and stakeholder alignment with IT leadership.
+- Developed a Python-based freight dimension estimation solution for the Dispatch team using
+historical logistics data, reducing manual processing time from ~5 hours to 10 minutes.
+Designed and maintained ETL pipelines using Python and SQL to integrate, transform and validate
+operational data from multiple sources, improving data quality and enabling predictive models with
+over 80% accuracy.
+Worked across the full data lifecycle, including data collection, preparation, analysis, validation,
+and deployment of data-driven solutions.
+
 - Bullet points:
 Architected the deployment strategy, evaluating three approaches (CPU-only local pilot, cloud LLM API, and hybrid local+cloud) and recommending a phased path that preserved data privacy while unblocking a GPU-less server constraint.
 Defined infrastructure requirements (compute, storage, OS, networking, containerization) for a CPU-only pilot as an interim solution ahead of GPU provisioning, and communicated trade-offs directly to IT/leadership stakeholders.
@@ -118,6 +126,7 @@ The article concluded that gamification can significantly enhance the learning e
 - Learning and practicing **ukulele**; enjoys music.
 - Running once a week.
 - **Gym / fitness** — disciplined and consistent.
+- **Running** - Andres enjoys long running sessions with his friends and new people.
 - **Reading:** *Surrounded by idiots (recent read)*,*The psichology of money*,*The Subtle Art of Not Giving a F*ck* , *How to win friends and influence people*; open to self‑help and practical books.
 - **Cars:** Passionate about cars, actively working with car market datasets.
 
